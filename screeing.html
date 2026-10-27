@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Resume Screening System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6fb;
+            color: #263247;
+        }
+
+        header {
+            background: #253b80;
+            color: white;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h2 {
+            font-size: 23px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-size: 14px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: #e8edff;
+        }
+
+        .hero h1 {
+            color: #253b80;
+            font-size: 32px;
+            margin-bottom: 14px;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: auto;
+            line-height: 1.7;
+            color: #5c6680;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            color: #253b80;
+            margin-bottom: 20px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 13px;
+            box-shadow: 0 4px 18px #202e500d;
+        }
+
+        .card h2 {
+            color: #253b80;
+            font-size: 21px;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 9px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d5dbea;
+            border-radius: 7px;
+            font-size: 14px;
+            background: white;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .upload-box {
+            border: 2px dashed #9aa9db;
+            background: #f7f8ff;
+            border-radius: 10px;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        .upload-box .symbol {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .upload-box p {
+            color: #65718c;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            font-size: 13px;
+        }
+
+        .primary-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: #344fc0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .primary-btn:hover {
+            background: #253b80;
+        }
+
+        .results {
+            margin-top: 28px;
+        }
+
+        .candidate {
+            border: 1px solid #e0e5f0;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .candidate-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .candidate h3 {
+            color: #263b78;
+            margin-bottom: 7px;
+        }
+
+        .candidate p {
+            color: #68748a;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .score {
+            color: #247447;
+            background: #e5f7ec;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .skill {
+            display: inline-block;
+            background: #edf0ff;
+            color: #344fc0;
+            border-radius: 5px;
+            padding: 6px 9px;
+            font-size: 12px;
+            margin: 10px 5px 0 0;
+        }
+
+        .notice {
+            background: #fff4df;
+            color: #795516;
+            border-left: 4px solid #e5a126;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        footer {
+            background: #253b80;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 750px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 0 7px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>ResumeCloud AI</h2>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#screening">Screening</a>
+            <a href="#results">Candidates</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Cloud-Based Resume Screening</h1>
+        <p>
+            Simplify recruitment by comparing candidate skills
+            with job requirements using an AI-assisted resume
+            screening workflow.
+        </p>
+    </section>
+
+    <main class="container" id="screening">
+
+        <h2 class="section-title">Resume Screening Dashboard</h2>
+
+        <div class="main-grid">
+
+            <section class="card">
+                <h2>Upload Resume</h2>
+
+                <div class="upload-box">
+                    <div class="symbol">&#128196;</div>
+                    <h3>Select Candidate Resume</h3>
+                    <p>
+                        Choose a PDF or DOCX resume from your computer.
+                        This frontend does not upload files to a server.
+                    </p>
+
+                    <input type="file" accept=".pdf,.doc,.docx">
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Job Requirements</h2>
+
+                <div class="field">
+                    <label for="job">Job Title</label>
+                    <input type="text" id="job"
+                        placeholder="e.g. Python Developer">
+                </div>
+
+                <div class="field">
+                    <label for="skills">Required Skills</label>
+                    <textarea id="skills"
+                        placeholder="Python, SQL, Machine Learning, HTML, CSS"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="experience">Required Experience</label>
+                    <select id="experience">
+                        <option>Fresher</option>
+                        <option>1-2 Years</option>
+                        <option>3-5 Years</option>
+                        <option>5+ Years</option>
+                    </select>
+                </div>
+
+                <button type="button" class="primary-btn">
+                    Screen Resumes
+                </button>
+            </section>
+
+        </div>
+
+        <section class="card results" id="results">
+            <h2>Candidate Screening Results</h2>
+
+            <div class="candidate">
+                <div class="candidate-top">
+                    <div>
+                        <h3>Sample Candidate A</h3>
+                        <p>Skills listed in the sample profile</p>
+                    </div>
+                    <span class="score">85% Demo Match</span>
+                </div>
+
+                <span class="skill">Python</span>
+                <span class="skill">SQL</span>
+                <span class="skill">Machine Learning</span>
+
+                <p style="margin-top: 12px;">
+                    Example profile for demonstrating the results layout.
+                    This is not a real screening result.
+                </p>
+            </div>
+
+            <div class="candidate">
+                <div class="candidate-top">
+                    <div>
+                        <h3>Sample Candidate B</h3>
+                        <p>Skills listed in the sample profile</p>
+                    </div>
+                    <span class="score">70% Demo Match</span>
+                </div>
+
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+
+                <p style="margin-top: 12px;">
+                    Example profile for demonstrating the results layout.
+                    This is not a real screening result.
+                </p>
+            </div>
+
+            <div class="notice">
+                <strong>Important:</strong> Candidate names and match
+                percentages are illustrative sample data. A real
+                system must extract resume information and calculate
+                matches using a connected screening model. Recruiters
+                should review results and avoid discriminatory criteria.
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>ResumeCloud AI | AI & Data Science Project</p>
+    </footer>
+
+</body>
+</html>
